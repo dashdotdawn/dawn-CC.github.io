@@ -41,6 +41,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Dawn's Mirror" type="application/atom+xml" />
+
 
 
 
@@ -53,12 +55,12 @@
 
 <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="code the world | Dawn">
+<meta property="og:title" content="Dawn's Mirror">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="code the world | Dawn">
+<meta property="og:site_name" content="Dawn's Mirror">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="code the world | Dawn">
+<meta name="twitter:title" content="Dawn's Mirror">
 <meta name="twitter:description">
 
 
@@ -71,10 +73,10 @@
   };
 </script>
 
-  <title> code the world | Dawn </title>
+  <title> Dawn's Mirror </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -104,11 +106,11 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">code the world | Dawn</span>
+      <span class="site-title">Dawn's Mirror</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle"></p>
+  <p class="site-subtitle">code the world</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -131,7 +133,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -141,7 +143,7 @@
             
               <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
             
-            Categories
+            分类
           </a>
         </li>
       
@@ -151,7 +153,7 @@
             
               <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
@@ -161,7 +163,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -171,7 +173,7 @@
             
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -229,8 +231,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/10/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2016/01/12/mac下Hexo博客搭建/" itemprop="url">
+                  mac下Hexo博客搭建
                 </a>
               
             
@@ -239,15 +241,37 @@
 
         <div class="post-meta">
           <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2016-01-10T00:54:03+08:00" content="2016-01-10">
-              2016-01-10
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-12T16:31:27+08:00" content="2016-01-12">
+              2016-01-12
             </time>
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/12/mac下Hexo博客搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/12/mac下Hexo博客搭建/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -265,20 +289,13 @@
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-            
-          </span>
+          <p>第一篇文章简单纪录一下第一次搭建blog的过程。</p>
+<p>经验告诉我<strong>文档大法好</strong>，可以少踩坑，避免很多不必要的操作。因此基本都是在<a href="https://hexo.io/zh-cn/docs/">官方文档</a>指导下操作的，参考了部分文章。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/12/mac下Hexo博客搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -332,7 +349,7 @@
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Dawn Zhang" itemprop="image"/>
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Dawn Zhang" itemprop="image"/>
           <p class="site-author-name" itemprop="name">Dawn Zhang</p>
         </div>
         <p class="site-description motion-element" itemprop="description"></p>
@@ -340,29 +357,46 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">categories</span>
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">tags</span>
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
               </a>
           </div>
 
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dawn-CC/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
           
         </div>
 
@@ -397,11 +431,11 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
@@ -422,11 +456,28 @@
 
   
     
-    
 
   
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"dawncc"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
 
 
+    
   
 
   
