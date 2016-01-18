@@ -4,7 +4,7 @@
   <subtitle><![CDATA[code the world]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-12T11:49:48.000Z</updated>
+  <updated>2016-01-18T16:29:55.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,183 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[ife_task0001总结]]></title>
+    <link href="http://yoursite.com/2016/01/14/ife-task0001%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/01/14/ife-task0001总结/</id>
+    <published>2016-01-13T17:12:07.000Z</published>
+    <updated>2016-01-18T16:29:55.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="https://github.com/baidu-ife/ife" target="_blank" rel="external">百度Web前端技术学院</a>（Baidu Institute of Front-End Technology简称IFE）在2015年开办过两次前端课程，课程及内容开放在Github上，是前端入门学习不错的资料。</p>
+<p>这里对<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring" target="_blank" rel="external">ife_2015spring</a>中task0001的学习过程做一下整理与总结。<br><a id="more"></a></p>
+<h2 id="u76F8_u5173_u5B9A_u4E49"><a href="#u76F8_u5173_u5B9A_u4E49" class="headerlink" title="相关定义"></a>相关定义</h2><h3 id="u4EC0_u4E48_u662FWeb"><a href="#u4EC0_u4E48_u662FWeb" class="headerlink" title="什么是Web"></a>什么是Web</h3><p>理解网页访问的过程：<br>根据浏览器输入的地址，向服务器发送HTTP请求，服务器向数据库查询数据，数据库返回数据，服务器返回HTTP响应。浏览器接收响应后就可以显示页面内容了。</p>
+<h3 id="u4EC0_u4E48_u662FHTML"><a href="#u4EC0_u4E48_u662FHTML" class="headerlink" title="什么是HTML"></a>什么是HTML</h3><p>接收到的HTTP响应的body部分，对应html内容，html是一种超文本标记语言(HyperText markup language)，可以标记出内容的结构、类型意义，如图片<code>&lt;img&gt;</code>、段落<code>&lt;p&gt;</code>、超链接<code>&lt;a&gt;</code>等。<br>html作为网页的基础，经浏览器解析渲染后可以在页面上显示出来。</p>
+<h3 id="u4EC0_u4E48_u662FCSS"><a href="#u4EC0_u4E48_u662FCSS" class="headerlink" title="什么是CSS"></a>什么是CSS</h3><p>CSS即层叠样式表(Cascading style sheets)，为文档的内容指定样式和格式，如字体、背景、边框等。不同的html可以使用相同的css。下图即html在添加一些css前后的区别。<br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Ftask1_1.png" alt=""><br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Ftask1_2.png" alt=""></p>
+<h3 id="HTML_u4E0ECSS_u5982_u4F55_u4E00_u8D77_u5DE5_u4F5C"><a href="#HTML_u4E0ECSS_u5982_u4F55_u4E00_u8D77_u5DE5_u4F5C" class="headerlink" title="HTML与CSS如何一起工作"></a>HTML与CSS如何一起工作</h3><p>浏览器展现文档：首先将文档中的标记语言和css转换成DOM(document object model)结构，再将DOM结构向用户展示出来。<br>DOM结构是一种树形结构，元素可以作为节点，同时又作为其包含元素的容器（父节点）。</p>
+<h3 id="HTML_u53CACSS_u7684_u53D1_u5C55_u53F2"><a href="#HTML_u53CACSS_u7684_u53D1_u5C55_u53F2" class="headerlink" title="HTML及CSS的发展史"></a>HTML及CSS的发展史</h3><p>80年代后期，<a href="http://zh.wikipedia.org/zh-cn/蒂姆·伯纳斯-李" target="_blank" rel="external">蒂姆·博纳斯-李</a>设计了一种源于<a href="https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language" target="_blank" rel="external">SGML</a>的分享文档的方式（从html5开始，不再坚守SGML语法。），即HTML，它是一个国际化的标准，由W3C和WHATWG维护。<br>HTML5 是 HTML 标准的最新演进版本。具体特性变化可以参考<a href="http://www.w3.org/TR/html5-diff/#history" target="_blank" rel="external">HTML5 Differences from HTML4</a>和<a href="/"></a>。其中有一些新的阶段和标题标签，如<code>&lt;section&gt;, &lt;article&gt;, &lt;nav&gt;, &lt;header&gt;, &lt;footer&gt;, &lt;aside&gt; 和 &lt;hgroup&gt;</code>等，为web文档的结构和大纲理解带来便利。</p>
+<h2 id="u76F8_u5173_u77E5_u8BC6_u70B9"><a href="#u76F8_u5173_u77E5_u8BC6_u70B9" class="headerlink" title="相关知识点"></a>相关知识点</h2><h3 id="u4E00_u4E9B_u57FA_u672C_u7684HTML_u8BED_u6CD5_u53CA_u6807_u7B7E"><a href="#u4E00_u4E9B_u57FA_u672C_u7684HTML_u8BED_u6CD5_u53CA_u6807_u7B7E" class="headerlink" title="一些基本的HTML语法及标签"></a>一些基本的HTML语法及标签</h3><p><a href="http://www.w3.org/TR/2011/WD-html5-20110113/named-character-references.html" target="_blank" rel="external">实体符号</a>，常用的有</p>
+<table>
+<thead>
+<tr>
+<th>实体符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;gt;</code></td>
+<td>表示大于符号”&gt;” (&gt;)</td>
+</tr>
+<tr>
+<td><code>&amp;lt;</code></td>
+<td>表示小于符号”&lt;” (&lt;)</td>
+</tr>
+<tr>
+<td><code>&amp;amp;</code></td>
+<td>表示和符号”and”(&amp;)</td>
+</tr>
+<tr>
+<td><code>&amp;quot;</code></td>
+<td>表示引用符号” (“)</td>
+</tr>
+<tr>
+<td><code>&amp;nbsp;</code></td>
+<td>空格</td>
+</tr>
+</tbody>
+</table>
+<h3 id="CSS_u7684_u7EE7_u627F_u3001_u5C42_u53E0_u3001_u6837_u5F0F_u4F18_u5148_u7EA7"><a href="#CSS_u7684_u7EE7_u627F_u3001_u5C42_u53E0_u3001_u6837_u5F0F_u4F18_u5148_u7EA7" class="headerlink" title="CSS的继承、层叠、样式优先级"></a>CSS的继承、层叠、样式优先级</h3><blockquote>
+<p>对于层叠来说，有三种主要的样式来源：</p>
+<ul>
+<li>浏览器对HTML定义的默认样式。</li>
+<li>用户定义的样式。</li>
+<li>开发者定义的样式，可以有三种形式：<ul>
+<li>定义在外部文件（外链样式）：常用。</li>
+<li>在页面的头部定义（内联样式）：只在本页面内生效。</li>
+<li>定义在特定的元素身上（行内样式）：多用于测试，可维    护性较差。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>层叠样式的优先级一般为<br><code>user agent declarations &lt; user normal declarations &lt; author normal declarations &lt; author important declarations &lt; user important declarations</code>，详见<a href="http://www.w3.org/TR/CSS21/cascade.html" target="_blank" rel="external">Assigning property values, Cascading, and Inheritance</a>6.4节。但是<strong><code>!important</code></strong>关键字可以为样式设置最高权值。</p>
+<p>继承指的是子元素会继承父元素的某些样式。子元素的样式优先级高于父元素。</p>
+<h3 id="CSS_u9009_u62E9_u5668"><a href="#CSS_u9009_u62E9_u5668" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><p>选择器有类选择器、id选择器、伪类选择器等。</p>
+<p>权值计算规则为：标签＝1，类选择器＝10，ID选择器＝100，继承的权值最低(0.1)，计算时将选择内容的权值相加，权值高的优先。</p>
+<h3 id="u6587_u672C_u76F8_u5173_u6837_u5F0F_u5C5E_u6027"><a href="#u6587_u672C_u76F8_u5173_u6837_u5F0F_u5C5E_u6027" class="headerlink" title="文本相关样式属性"></a>文本相关样式属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">text-transform</span>:<span class="comment">/*字母大小写*/</span></span><br><span class="line"><span class="tag">word-spacing</span>:<span class="comment">/*字间距，英文为单词间距*/</span></span><br><span class="line"><span class="tag">white-space</span>:<span class="comment">/*元素内空白处理方式，如pre/nowrap等*/</span></span><br><span class="line"><span class="at_rule">@<span class="keyword">font-face</span></span>:<span class="comment">/*定义字体及路径src*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="u884C_u9AD8_u5C5E_u6027"><a href="#u884C_u9AD8_u5C5E_u6027" class="headerlink" title="行高属性"></a>行高属性</h3><p>理解行高：行高与font-size的差＝行间距。</p>
+<p><a href="http://www.cnblogs.com/fengzheng126/archive/2012/05/18/2507632.html" target="_blank" rel="external">深入了解行高属性</a></p>
+<p>上文可以简单总结为：  </p>
+<blockquote>
+<p>在line-height中，％值会将计算出的行高px值继承，px值会被原样继承，数字(如1.5)会继承比例后随font-size作缩放。<br>boxes类型有4种:containging boxes、inline boxes、line boxes、content area。<br>line box的行高取决于它内部最高的inline box。</p>
+</blockquote>
+<h2 id="u76D2_u6A21_u578B_u53CA_u5B9A_u4F4D"><a href="#u76D2_u6A21_u578B_u53CA_u5B9A_u4F4D" class="headerlink" title="盒模型及定位"></a>盒模型及定位</h2><ol>
+<li><p>用两种方法来实现一个背景色为红色、宽度为960px的<code>&lt;DIV&gt;</code>在浏览器中居中</p>
+<ul>
+<li>定宽block元素，设置左右margin为auto;</li>
+<li>inline元素，设置父元素<code>text-align: center;</code>，若需设置元素width等，则<code>display:inline-block;</code>。</li>
+</ul>
+</li>
+<li>在不使用border-radius的情况下实现一个可复用的高度和宽度都自适应的圆角矩形<ul>
+<li>使用多张图片作为背景；</li>
+<li>参考<a href="http://blog.csdn.net/wangxiaohui6687/article/details/7678661" target="_blank" rel="external">css圆角矩形框 - wangxiaohui6687的专栏 - 博客频道 - CSDN.NET</a>，将圆角矩形的圆角分割为像素块。</li>
+</ul>
+</li>
+<li>用两种不同的方法来实现一个两列布局，其中左侧部分宽度固定、右侧部分宽度随浏览器宽度的变化而自适应变化 <ul>
+<li>使用<code>position: absolute</code>针对父元素定位，右侧部分设置<code>margin-left</code>为左侧的宽度；</li>
+<li>使用<code>float: left;</code>，右侧部分设置<code>margin-left</code>为左侧的宽度；</li>
+<li>使用flex布局，参考<a href="http://zh.learnlayout.com/flexbox.html" target="_blank" rel="external">CSS - flexbox</a>。</li>
+</ul>
+</li>
+<li>用两种不同的方式来实现一个三列布局，其中左侧和右侧的部分宽度固定，中间部分宽度随浏览器宽度的变化而自适应变化<ul>
+<li>左右利用<code>float: left;float:right</code>控制，中间利用<code>margin</code>值控制位置。<strong>开始遇到问题</strong>：DOM结构按照左中右的顺序，结果右边部分跑到下一行了。没有注意非浮动div的block属性。改为左右中即可。</li>
+<li>参考<a href="http://www.imooc.com/wenda/detail/254035" target="_blank" rel="external">双飞翼布局介绍-始于淘宝UED_慕课猿问</a>，设置<code>float: left;</code>，定位中间div(父div设为<code>width: 100%;</code>)后，左右元素分别设置负边距调整位置。</li>
+</ul>
+</li>
+<li>实现一个浮动布局，红色容器中每一行的蓝色容器数量随着浏览器宽度的变化而变化 <ul>
+<li>设置float和margin，注意之后的元素需要清除浮动<code>clear: left;</code>。<strong>遇到的问题</strong>：设置的背景色红色不能正确显示。这里涉及到BFC，可以通过修改overflow属性来修正，后文对BFC做详细介绍；</li>
+<li>使用<code>display: inline-block</code>。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0001/task0001_1-6" target="_blank" rel="external">code</a></p>
+</blockquote>
+<h2 id="u7EFC_u5408_u7EC3_u4E60"><a href="#u7EFC_u5408_u7EC3_u4E60" class="headerlink" title="综合练习"></a>综合练习</h2><blockquote>
+<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0001/task0001_7" target="_blank" rel="external">code</a><br><a href="/">demo待补充</a></p>
+</blockquote>
+<p>练习的内容是，在不使用框架的情况下，把设计稿转化为html和css。</p>
+<p>框架什么的，刚好我也不会……刚开始真的不知道从哪里下手，参考了许多人的代码后，尝试独立写，写的过程是一个不断掉坑、从坑里爬出来的过程，泪，最后弱弱的满足。</p>
+<p><strong>一些坑：</strong></p>
+<h3 id="u53BB_u9664_u9ED8_u8BA4_u8FB9_u8DDD"><a href="#u53BB_u9664_u9ED8_u8BA4_u8FB9_u8DDD" class="headerlink" title="去除默认边距"></a>去除默认边距</h3><p>h1等标签元素默认的padding、margin，会影响margin合并规则与实际不一致。可在最前面把需要的标签（或使用*）内外边距都设为0。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="u53BB_u9664inline-block_u4E4B_u95F4_u7684_u7A7A_u9699"><a href="#u53BB_u9664inline-block_u4E4B_u95F4_u7684_u7A7A_u9699" class="headerlink" title="去除inline-block之间的空隙"></a>去除inline-block之间的空隙</h3><p>针对inline-block之间会存在空隙的问题。<br>解决：参考</p>
+<blockquote>
+<p><a href="http://www.imooc.com/wiki/view?pid=138" target="_blank" rel="external">解决行内元素间隙bug问题</a>(这里介绍的比较简单）<br><a href="https://css-tricks.com/fighting-the-space-between-inline-block-elements/" target="_blank" rel="external">Fighting the Space Between Inline Block Elements | CSS-Tricks</a></p>
+</blockquote>
+<p>几种方法总结如下：</p>
+<ol>
+<li>负边距；</li>
+<li>父元素<code>font-size: 0;</code>；</li>
+<li>去除各元素首尾<strong>之间</strong>的空格、tab等；</li>
+<li>省略闭合标签；</li>
+<li>其他flex等方式；</li>
+</ol>
+<p><em>类似的问题：</em></p>
+<p>写完<code>header</code>部分后发现，右侧的github图标虽然对header使用了绝对定位<code>position: absolute;</code>，且<code>bottom: 0;</code>，图标仍与底边存在空隙。</p>
+<p>原因：<code>&lt;img&gt;</code>默认为inline元素，具有默认的line-height(4px)。见<a href="http://stackoverflow.com/questions/11126685/why-does-container-div-insist-on-being-slightly-larger-than-its-contentimg" target="_blank" rel="external">stackoverflow</a>。</p>
+<h3 id="u6E05_u9664_u6D6E_u52A8_u4E0EBFC"><a href="#u6E05_u9664_u6D6E_u52A8_u4E0EBFC" class="headerlink" title="清除浮动与BFC"></a>清除浮动与BFC</h3><blockquote>
+<p><a href="http://www.iyunlu.com/view/css-xhtml/55.html" target="_blank" rel="external">那些年我们一起清除过的浮动-层叠之美</a></p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:after &#123;</span><br><span class="line">    content: "200B"; </span><br><span class="line">    display: block;</span><br><span class="line">    height: 0; </span><br><span class="line">    clear: both; </span><br><span class="line">&#125;</span><br><span class="line">.clearfix &#123;</span><br><span class="line">    *zoom: 1; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="http://zh.learnlayout.com/clearfix.html" target="_blank" rel="external">CSS - 清除浮动（clearfix hack）</a></p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">overflow</span>: <span class="tag">auto</span>;</span><br><span class="line"><span class="tag">zoom</span>: 1;</span><br></pre></td></tr></table></figure>
+<p>清除浮动的原理与BFC有关，BFC指块级格式化上下文。</p>
+<p>BFC的创建</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context" target="_blank" rel="external">块格式化上下文 - Web 开发者指南 | MDN</a></p>
+</blockquote>
+<p>影响</p>
+<blockquote>
+<p>定位和清除浮动的样式规则只适用于同一块格式化上下文中的元素。</p>
+</blockquote>
+<p>用法</p>
+<blockquote>
+<p><a href="http://www.cnblogs.com/pigtail/archive/2013/01/23/2871627.html" target="_blank" rel="external">关于Block Formatting Context－－BFC和IE的hasLayout</a></p>
+</blockquote>
+<h3 id="u5176_u4ED6"><a href="#u5176_u4ED6" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>css文件名用数字开头，会使link无效。</li>
+<li>发现index页面中banner部分的文字位置改变，排查发现原因是后文选择器使用错误。<br>  <code>.gallery-item h2,p {
+  margin-left: 50px;
+  }</code>表示<code>.gallery-item h2</code>和<code>p</code>。<br>  应改正为<code>.gallery-item h2, .gallery-item p</code>。</li>
+<li>标题靠右要使用<code>text-align</code>，若用<code>float</code>，则之后的段落文本会呈环绕状。</li>
+<li>background 不包括 margin 部分。</li>
+<li><p>渐变背景色的实现与兼容：</p>
+<blockquote>
+<p><a href="http://www.colorzilla.com/gradient-editor/" target="_blank" rel="external">gradient-editor</a></p>
+</blockquote>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 75%, rgba(255,255,255,0) 100%); /* FF3.6+ */</span><br><span class="line">background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.7)), color-stop(75%,rgba(255,255,255,0.5)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */</span><br><span class="line">background: -webkit-linear-gradient(top, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.5) 75%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */</span><br><span class="line">background: -o-linear-gradient(top, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.5) 75%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */</span><br><span class="line">background: -ms-linear-gradient(top, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.5) 75%,rgba(255,255,255,0) 100%); /* IE10+ */</span><br><span class="line">background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.5) 75%,rgba(255,255,255,0) 100%); /* W3C */</span><br><span class="line">filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>url()本地路径要以../开头。</p>
+</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">css媒体查询</a></li>
+<li><a href="http://www.xuebuyuan.com/1674951.html" target="_blank" rel="external">父元素与子元素之间的margin问题</a></li>
+<li>::after伪元素介绍<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/::after" target="_blank" rel="external">::after (:after) - CSS | MDN</a></li>
+<li>写html布局的时候需要注意<a href="http://justineo.github.io/slideshows/semantic-html/#/" target="_blank" rel="external">web语义化</a>。</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="https://github.com/baidu-ife/ife">百度Web前端技术学院</a>（Baidu Institute of Front-End Technology简称IFE）在2015年开办过两次前端课程，课程及内容开放在Github上，是前端入门学习不错的资料。</p>
+<p>这里对<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring">ife_2015spring</a>中task0001的学习过程做一下整理与总结。<br>]]>
+    
+    </summary>
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[mac下Hexo博客搭建]]></title>
