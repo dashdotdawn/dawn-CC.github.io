@@ -4,7 +4,7 @@
   <subtitle><![CDATA[code the world]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-12T16:26:07.000Z</updated>
+  <updated>2016-02-14T18:00:16.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,14 +15,152 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[JavaScript深度学习-原型与闭包]]></title>
+    <link href="http://yoursite.com/2016/02/13/JavaScript%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2016/02/13/JavaScript深度学习/</id>
+    <published>2016-02-13T07:41:50.000Z</published>
+    <updated>2016-02-14T18:00:16.000Z</updated>
+    <content type="html"><![CDATA[<p>学习JavaScript闭包、设计模式等内容过程中，简单做一些笔记整理，便于自己的理解。</p>
+<h2 id="u4F5C_u7528_u57DF"><a href="#u4F5C_u7528_u57DF" class="headerlink" title="作用域"></a>作用域</h2><h3 id="u5168_u5C40_u4F5C_u7528_u57DF_28Global_Scope_29"><a href="#u5168_u5C40_u4F5C_u7528_u57DF_28Global_Scope_29" class="headerlink" title="全局作用域(Global Scope)"></a>全局作用域(Global Scope)</h3><ul>
+<li>最外层函数</li>
+<li>最外层函数外定义的变量</li>
+<li>未定义直接赋值的变量</li>
+<li>window对象的属性</li>
+</ul>
+<a id="more"></a>
+<h3 id="u5C40_u90E8_u4F5C_u7528_u57DF_28Local_Scope_29"><a href="#u5C40_u90E8_u4F5C_u7528_u57DF_28Local_Scope_29" class="headerlink" title="局部作用域(Local Scope)"></a>局部作用域(Local Scope)</h3><ul>
+<li>函数内部定义的变量</li>
+<li>内部函数</li>
+</ul>
+<h3 id="u4F5C_u7528_u57DF_u94FE_28Scope_Chain_29"><a href="#u4F5C_u7528_u57DF_u94FE_28Scope_Chain_29" class="headerlink" title="作用域链(Scope Chain)"></a>作用域链(Scope Chain)</h3><blockquote>
+<p><a href="http://www.cnblogs.com/lhb25/archive/2011/09/06/javascript-scope-chain.html" target="_blank" rel="external">理解 JavaScript 作用域和作用域链</a></p>
+</blockquote>
+<ul>
+<li><code>[[Scope]]</code>是函数对象的一个内部属性。</li>
+<li>任何执行上下文时刻的作用域, 都是由作用域链(scope chain)来实现，作用域链决定了哪些数据能被函数访问，包含了函数被创建的作用域中对象的集合。</li>
+<li>在一个函数被定义的时候, 会将它定义时刻的scope chain链接到这个函数对象的<code>[[scope]]</code>属性。</li>
+</ul>
+<p>一般，一个作用域链包括父级变量对象（variable object）（作用域链的顶部）、函数自身变量VO和活动对象（activation object）。with或者catch语句可能导致作用域变更。</p>
+<h3 id="u5176_u4ED6"><a href="#u5176_u4ED6" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>变量提升：自动把所有声明的变量提升到函数顶部，不提升赋值。</li>
+<li><p>执行上下文(<a href="http://www.cnblogs.com/wangfupeng1988/p/3987563.html" target="_blank" rel="external">简述【执行上下文】下</a>)：</p>
+<ul>
+<li>变量、函数表达式——变量声明，默认赋值为undefined；</li>
+<li>this——赋值；</li>
+<li>函数声明——赋值；</li>
+</ul>
+</li>
+<li><p>块级作用域：let与const都具有块级作用域。</p>
+</li>
+<li>优化：多用局部变量代替全局变量使用。</li>
+<li><p>自由变量跨作用域取值：去创建这个函数的作用域取值，而不是“父作用域”。</p>
+<h2 id="u539F_u578B"><a href="#u539F_u578B" class="headerlink" title="原型"></a>原型</h2><h3 id="prototype_u5C5E_u6027"><a href="#prototype_u5C5E_u6027" class="headerlink" title="prototype属性"></a>prototype属性</h3><p><code>prototype</code>属性可以向对象添加属性和方法。</p>
+</li>
+<li><p>给obj对象的<code>prototype</code>属性赋值字面量来设定原型</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">obj.prototype = &#123;</span><br><span class="line">	a: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">	b: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>赋值原型prototype时使用function立即执行的表达式</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">obj.prototype = &#123;</span><br><span class="line">	a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">	b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>也可以分步声明</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.prototype.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">obj.prototype.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="5B_5BPrototype_5D_5D_uFF0F__proto"><a href="#5B_5BPrototype_5D_5D_uFF0F__proto" class="headerlink" title="[[Prototype]]／__proto__"></a>[[Prototype]]／__proto__</h3><blockquote>
+<p><a href="http://www.cnblogs.com/ziyunfei/archive/2012/10/05/2710955.html" target="_blank" rel="external">[译]JavaScript: __proto__</a></p>
+</blockquote>
+<p><code>__proto__</code> (发音为“dunder proto”,dunder是“double underscore”的简拼)最初出现在Firefox中,作为内部属性[[Prototype]]的别名。</p>
+<p>每个对象都有一个<code>__proto__</code>属性，指向创建该对象的函数的prototype。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.__proto__ === <span class="built_in">Object</span>.getPrototypeOf(obj)</span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><code>__proto__</code>可以用来创建一个以指定对象为原型的对象。</p>
+<p>在JavaScript中，所有的对象都是基于 <code>Object</code>；所有的对象都继承了<code>Object.prototype</code>的属性和方法。<code>Object.prototype</code>的<code>__proto__</code>指向的是null。</p>
+<blockquote>
+<p>从 ECMAScript 6 开始, <code>[[Prototype]]</code> 可以用<code>Object.getPrototypeOf()</code>和<code>Object.setPrototypeOf()</code>访问器来访问。不推荐使用<code>__proto__</code>。</p>
+</blockquote>
+<h3 id="u539F_u578B_u94FE"><a href="#u539F_u578B_u94FE" class="headerlink" title="原型链"></a>原型链</h3><blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank" rel="external">继承与原型链 - JavaScript | MDN</a></p>
+</blockquote>
+<p>原型链具有继承属性。</p>
+<blockquote>
+<p>在 javaScript 中，每个对象都有一个指向它的原型（prototype）对象的内部链接。这个原型对象又有自己的原型，直到某个对象的原型为 null 为止（也就是不再有原型指向），组成这条链的最后一环。这种一级一级的链结构就称为原型链（prototype chain）。</p>
+</blockquote>
+<h4 id="u5C5E_u6027_u67E5_u627E"><a href="#u5C5E_u6027_u67E5_u627E" class="headerlink" title="属性查找"></a>属性查找</h4><p>属性查找：从自身开始沿原型链查找。当重复时存在”属性遮蔽 (property shadowing)”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">o.someProp;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>执行上述语句时，它会检查是否存在 someProp 属性。</p>
+<p>如果没有，则查找 <code>Object.getPrototypeOf(o).someProp</code> 仍旧没有，继续查找<code>Object.getPrototypeOf(Object.getPrototypeOf(o)).someProp</code> ，一直查找下去，直到找到或者 <code>Object.getPrototypeOf()</code> 返回 null 。</p>
+</blockquote>
+<h4 id="u5BF9_u8C61_u521B_u5EFA_u4E0E_u539F_u578B_u94FE"><a href="#u5BF9_u8C61_u521B_u5EFA_u4E0E_u539F_u578B_u94FE" class="headerlink" title="对象创建与原型链"></a>对象创建与原型链</h4><p>一切（引用类型）都是对象，对象是属性的集合。</p>
+<ol>
+<li><p>普通语法</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;a: <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// o这个对象继承了Object.prototype上面的所有属性</span></span><br><span class="line"><span class="comment">// 所以可以这样使用 o.hasOwnProperty('a').</span></span><br><span class="line"><span class="comment">// hasOwnProperty 是Object.prototype的自身属性。</span></span><br><span class="line"><span class="comment">// Object.prototype的原型为null。</span></span><br><span class="line"><span class="comment">// 原型链如下:</span></span><br><span class="line"><span class="comment">// o ---&gt; Object.prototype ---&gt; null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="string">"yo"</span>, <span class="string">"whadup"</span>, <span class="string">"?"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组都继承于Array.prototype </span></span><br><span class="line"><span class="comment">// (indexOf, forEach等方法都是从它继承而来).</span></span><br><span class="line"><span class="comment">// 原型链如下:</span></span><br><span class="line"><span class="comment">// a ---&gt; Array.prototype ---&gt; Object.prototype ---&gt; null</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数都继承于Function.prototype</span></span><br><span class="line"><span class="comment">// (call, bind等方法都是从它继承而来):</span></span><br><span class="line"><span class="comment">// f ---&gt; Function.prototype ---&gt; Object.prototype ---&gt; null</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Object.create()可以创建一个拥有指定原型的新对象(ES5)。<br> <code>var newObj = Object.create(proto);</code></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;a: <span class="number">1</span>&#125;; </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Object</span>.create(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = <span class="built_in">Object</span>.create(b);</span><br><span class="line"><span class="comment">// c ---&gt; b ---&gt; a ---&gt; Object.prototype ---&gt; null</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用构造函数</p>
+</li>
+</ol>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> Foo();</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>JavaScript 实际上执行的是：</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">o.[[Prototype]] = Foo.prototype;</span><br><span class="line">Foo.call(o);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="u95ED_u5305_28Closure_29"><a href="#u95ED_u5305_28Closure_29" class="headerlink" title="闭包(Closure)"></a>闭包(Closure)</h2><blockquote>
+<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3994065.html" target="_blank" rel="external">深入理解javascript原型和闭包（15）——闭包</a></p>
+</blockquote>
+<ul>
+<li>闭包是指函数有自由独立的变量。<ul>
+<li>一般函数执行完毕后，局部活动对象被销毁，内存中仅保存全局上下文环境。</li>
+<li>存在闭包的情况，即函数中A可能返回的函数B中引用了A的上下文环境，那么A执行之后其上下文环境仍然存在，直到B被调用之后不再引用，此时A的上下文环境才被销毁。</li>
+</ul>
+</li>
+<li>使用闭包会造成内存消耗</li>
+<li>上下文环境不同于作用域，一个作用域可能存在多个上下文环境。</li>
+</ul>
+<hr>
+<p>待续</p>
+<ul>
+<li>构造函数</li>
+<li>面向对象编程</li>
+<li>设计模式</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>学习JavaScript闭包、设计模式等内容过程中，简单做一些笔记整理，便于自己的理解。</p>
+<h2 id="u4F5C_u7528_u57DF"><a href="#u4F5C_u7528_u57DF" class="headerlink" title="作用域"></a>作用域</h2><h3 id="u5168_u5C40_u4F5C_u7528_u57DF_28Global_Scope_29"><a href="#u5168_u5C40_u4F5C_u7528_u57DF_28Global_Scope_29" class="headerlink" title="全局作用域(Global Scope)"></a>全局作用域(Global Scope)</h3><ul>
+<li>最外层函数</li>
+<li>最外层函数外定义的变量</li>
+<li>未定义直接赋值的变量</li>
+<li>window对象的属性</li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[ife-task0002总结]]></title>
     <link href="http://yoursite.com/2016/01/19/ife-task0002%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2016/01/19/ife-task0002总结/</id>
     <published>2016-01-18T16:47:17.000Z</published>
-    <updated>2016-02-12T16:26:07.000Z</updated>
+    <updated>2016-02-14T18:02:11.000Z</updated>
     <content type="html"><![CDATA[<p>task0002的内容是Javascript的学习。</p>
 <p><a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0002#任务描述" target="_blank" rel="external"><strong>任务要求</strong></a></p>
-<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0002" target="_blank" rel="external"><strong>代码</strong></a><br><a id="more"></a></p>
+<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0002" target="_blank" rel="external"><strong>code</strong></a></p>
+<p><a href="http://dawn-cc.github.io/ife-task/task0002/task0002_1" target="_blank" rel="external"><strong>demo</strong></a><br><a id="more"></a></p>
 <h2 id="Javascript_u7684_u52A0_u8F7D_u4E0E_u6267_u884C"><a href="#Javascript_u7684_u52A0_u8F7D_u4E0E_u6267_u884C" class="headerlink" title="Javascript的加载与执行"></a>Javascript的加载与执行</h2><blockquote>
 <p><a href="http://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/index.html" target="_blank" rel="external">JavaScript 的性能优化：加载和执行</a></p>
 </blockquote>
@@ -379,7 +517,8 @@
     <summary type="html">
     <![CDATA[<p>task0002的内容是Javascript的学习。</p>
 <p><a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0002#任务描述"><strong>任务要求</strong></a></p>
-<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0002"><strong>代码</strong></a><br>]]>
+<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0002"><strong>code</strong></a></p>
+<p><a href="http://dawn-cc.github.io/ife-task/task0002/task0002_1"><strong>demo</strong></a><br>]]>
     
     </summary>
     
@@ -394,9 +533,14 @@
     <link href="http://yoursite.com/2016/01/14/ife-task0001%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2016/01/14/ife-task0001总结/</id>
     <published>2016-01-13T17:12:07.000Z</published>
-    <updated>2016-02-12T15:14:25.000Z</updated>
+    <updated>2016-02-14T12:29:34.000Z</updated>
     <content type="html"><![CDATA[<p><a href="https://github.com/baidu-ife/ife" target="_blank" rel="external">百度Web前端技术学院</a>（Baidu Institute of Front-End Technology简称IFE）在2015年开办过两次前端课程，课程及内容开放在Github上，是前端入门学习不错的资料。</p>
-<p>这里对<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring" target="_blank" rel="external">ife_2015spring</a>中task0001的学习过程做一下整理与总结。<br><a id="more"></a></p>
+<p>共有四个任务，task0001的综合练习完成在这里😱</p>
+<blockquote>
+<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0001/task0001_7" target="_blank" rel="external"><strong>code</strong></a> </p>
+<p><a href="http://dawn-cc.github.io/ife-task/task0001/task0001_7/index.html" target="_blank" rel="external"><strong>demo</strong></a></p>
+</blockquote>
+<p>任务一关于html和css，具体的<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001" target="_blank" rel="external">任务要求</a>。下面对<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring" target="_blank" rel="external">ife_2015spring</a>中task0001的学习过程做一下整理与总结。<br><a id="more"></a></p>
 <h2 id="u76F8_u5173_u5B9A_u4E49"><a href="#u76F8_u5173_u5B9A_u4E49" class="headerlink" title="相关定义"></a>相关定义</h2><h3 id="u4EC0_u4E48_u662FWeb"><a href="#u4EC0_u4E48_u662FWeb" class="headerlink" title="什么是Web"></a>什么是Web</h3><p>理解网页访问的过程：<br>根据浏览器输入的地址，向服务器发送HTTP请求，服务器向数据库查询数据，数据库返回数据，服务器返回HTTP响应。浏览器接收响应后就可以显示页面内容了。</p>
 <h3 id="u4EC0_u4E48_u662FHTML"><a href="#u4EC0_u4E48_u662FHTML" class="headerlink" title="什么是HTML"></a>什么是HTML</h3><p>接收到的HTTP响应的body部分，对应html内容，html是一种超文本标记语言(HyperText markup language)，可以标记出内容的结构、类型意义，如图片<code>&lt;img&gt;</code>、段落<code>&lt;p&gt;</code>、超链接<code>&lt;a&gt;</code>等。<br>html作为网页的基础，经浏览器解析渲染后可以在页面上显示出来。</p>
 <h3 id="u4EC0_u4E48_u662FCSS"><a href="#u4EC0_u4E48_u662FCSS" class="headerlink" title="什么是CSS"></a>什么是CSS</h3><p>CSS即层叠样式表(Cascading style sheets)，为文档的内容指定样式和格式，如字体、背景、边框等。不同的html可以使用相同的css。下图即html在添加一些css前后的区别。<br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Ftask1_1.png" alt=""><br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Ftask1_2.png" alt=""></p>
@@ -490,7 +634,7 @@
 <p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0001/task0001_1-6" target="_blank" rel="external">code</a></p>
 </blockquote>
 <h2 id="u7EFC_u5408_u7EC3_u4E60"><a href="#u7EFC_u5408_u7EC3_u4E60" class="headerlink" title="综合练习"></a>综合练习</h2><blockquote>
-<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0001/task0001_7" target="_blank" rel="external">code</a><br><a href="/">demo待补充</a></p>
+<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0001/task0001_7" target="_blank" rel="external">code</a><br><a href="http://dawn-cc.github.io/ife-task/task0001/task0001_7/index.html" target="_blank" rel="external">demo</a></p>
 </blockquote>
 <p>练习的内容是，在不使用框架的情况下，把设计稿转化为html和css。</p>
 <p>框架什么的，刚好我也不会……刚开始真的不知道从哪里下手，参考了许多人的代码后，尝试独立写，写的过程是一个不断掉坑、从坑里爬出来的过程，泪，最后弱弱的满足。</p>
@@ -556,7 +700,12 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p><a href="https://github.com/baidu-ife/ife">百度Web前端技术学院</a>（Baidu Institute of Front-End Technology简称IFE）在2015年开办过两次前端课程，课程及内容开放在Github上，是前端入门学习不错的资料。</p>
-<p>这里对<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring">ife_2015spring</a>中task0001的学习过程做一下整理与总结。<br>]]>
+<p>共有四个任务，task0001的综合练习完成在这里😱</p>
+<blockquote>
+<p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0001/task0001_7"><strong>code</strong></a> </p>
+<p><a href="http://dawn-cc.github.io/ife-task/task0001/task0001_7/index.html"><strong>demo</strong></a></p>
+</blockquote>
+<p>任务一关于html和css，具体的<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001">任务要求</a>。下面对<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring">ife_2015spring</a>中task0001的学习过程做一下整理与总结。<br>]]>
     
     </summary>
     
