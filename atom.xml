@@ -4,7 +4,7 @@
   <subtitle><![CDATA[code the world]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-14T18:00:16.000Z</updated>
+  <updated>2016-02-15T15:34:56.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[git 使用]]></title>
+    <link href="http://yoursite.com/2016/02/15/git-%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/02/15/git-使用/</id>
+    <published>2016-02-15T10:23:59.000Z</published>
+    <updated>2016-02-15T15:34:56.000Z</updated>
+    <content type="html"><![CDATA[<p>记录一下平时使用github的方式，和一些常用命令。</p>
+<h2 id="u914D_u5408github_u4F7F_u7528"><a href="#u914D_u5408github_u4F7F_u7528" class="headerlink" title="配合github使用"></a>配合github使用</h2><ul>
+<li>在github上新建repository</li>
+<li>本地<code>git clone https://xxx.xxx.git &lt;directory&gt;</code> </li>
+<li>在本地进行开发</li>
+<li><code>git add file</code>将文件添加到暂存区</li>
+<li><code>git commit -m &#39;xxx&#39;</code>将文件提交到版本库</li>
+<li><code>git status</code>可以查看git状态<a id="more"></a></li>
+<li><code>git push origin A:B</code>将本地A分支的内容push到远程的B分支上，B省略则根据追踪关系判断，B不存在则新建与A同名的分支，A省略则删除指定分支</li>
+<li>如果需要更新github上新的内容至本地<ul>
+<li><code>git fetch origin B</code>取回指定分支B的更新至本地，B省略则取回所有分支</li>
+<li><code>git pull origin B:A</code>取回指定分支B并合并至本地分支A上</li>
+<li>fetch与pull的区别在于pull多了一个merge操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="u5206_u652F_u7BA1_u7406"><a href="#u5206_u652F_u7BA1_u7406" class="headerlink" title="分支管理"></a>分支管理</h2><ul>
+<li><code>git checkout -b A</code>创建并切换到A分支</li>
+<li><code>git branch A</code>创建A分支</li>
+<li><code>git checkout A</code>切换到A分支</li>
+<li><code>git branch</code>查看当前分支</li>
+<li><code>git merge A</code>将分支A合并到当前分支</li>
+<li><code>git branch -d A</code>删除A分支</li>
+</ul>
+<h2 id="u7248_u672C_u63A7_u5236"><a href="#u7248_u672C_u63A7_u5236" class="headerlink" title="版本控制"></a>版本控制</h2><ul>
+<li><code>git log --pretty=oneline</code>查看提交日志</li>
+<li><code>git reset --hard HEAD^</code>回退到上一个版本或指定回退到版本号</li>
+<li><code>git reflog</code>查看命令日志可查找到指定版本号</li>
+<li><code>git checkout -- file</code>撤销修改，即，使工作区的file回到最近一次add或commit的状态来恢复文件。</li>
+<li><code>git reset HEAD file</code>撤销暂存区的修改，工作区仍保留</li>
+</ul>
+<h3 id="u5220_u9664"><a href="#u5220_u9664" class="headerlink" title="删除"></a>删除</h3><p>有一次没有设置好.gitignore，误将<code>.DStore</code>add到暂存区了</p>
+<ul>
+<li><code>git rm -r --cached file</code>可以撤销<code>git add</code>，参数说明见下</li>
+</ul>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">usage: git rm [&lt;options&gt;] [--] &lt;file&gt;...</span><br><span class="line"></span><br><span class="line">    -n, --dry-run         dry run</span><br><span class="line">    -q, --quiet           <span class="keyword">do</span> not list removed files</span><br><span class="line">    --cached              only remove from the index</span><br><span class="line">    <span class="operator">-f</span>, --force           override the up-to-date check</span><br><span class="line">    -r                    allow recursive removal</span><br><span class="line">    --ignore-unmatch      <span class="built_in">exit</span> with a zero status even <span class="keyword">if</span> nothing matched</span><br></pre></td></tr></table></figure>
+<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程 - 廖雪峰的官方网站</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="external">Git远程操作详解 - 阮一峰的网络日志</a></p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>记录一下平时使用github的方式，和一些常用命令。</p>
+<h2 id="u914D_u5408github_u4F7F_u7528"><a href="#u914D_u5408github_u4F7F_u7528" class="headerlink" title="配合github使用"></a>配合github使用</h2><ul>
+<li>在github上新建repository</li>
+<li>本地<code>git clone https://xxx.xxx.git &lt;directory&gt;</code> </li>
+<li>在本地进行开发</li>
+<li><code>git add file</code>将文件添加到暂存区</li>
+<li><code>git commit -m &#39;xxx&#39;</code>将文件提交到版本库</li>
+<li><code>git status</code>可以查看git状态]]>
+    
+    </summary>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="随手记" scheme="http://yoursite.com/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[JavaScript深度学习-原型与闭包]]></title>
