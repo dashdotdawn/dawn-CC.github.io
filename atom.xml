@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[JavaScript深度学习-原型与闭包]]></title>
-    <link href="http://yoursite.com/2016/02/13/JavaScript%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://yoursite.com/2016/02/13/JavaScript深度学习/</id>
+    <link href="http://yoursite.com/2016/02/13/JavaScript%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%97%AD%E5%8C%85/"/>
+    <id>http://yoursite.com/2016/02/13/JavaScript深度学习-原型与闭包/</id>
     <published>2016-02-13T07:41:50.000Z</published>
     <updated>2016-02-14T18:00:16.000Z</updated>
     <content type="html"><![CDATA[<p>学习JavaScript闭包、设计模式等内容过程中，简单做一些笔记整理，便于自己的理解。</p>
