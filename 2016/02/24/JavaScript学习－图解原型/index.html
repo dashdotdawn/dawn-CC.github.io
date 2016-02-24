@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="blog,hexo," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -53,21 +53,20 @@
 
 
 
-<meta name="description" content="第一篇文章简单纪录一下第一次搭建blog的过程。
-经验告诉我文档大法好，可以少踩坑，避免很多不必要的操作。因此基本都是在官方文档指导下操作的，参考了部分文章。">
+<meta name="description" content="图解原型之前针对原型和闭包写过一篇笔记，现在看来，那时候并没有真正理解原型，只是查阅整理了许多资料，有了一个似是而非的认识。
+这里通过一段代码和自己画的一个分析图作说明～">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac下Hexo博客搭建">
-<meta property="og:url" content="http://yoursite.com/2016/01/12/mac下Hexo博客搭建/index.html">
+<meta property="og:title" content="JavaScript学习－图解原型">
+<meta property="og:url" content="http://yoursite.com/2016/02/24/JavaScript学习－图解原型/index.html">
 <meta property="og:site_name" content="Dawn's Mirror">
-<meta property="og:description" content="第一篇文章简单纪录一下第一次搭建blog的过程。
-经验告诉我文档大法好，可以少踩坑，避免很多不必要的操作。因此基本都是在官方文档指导下操作的，参考了部分文章。">
-<meta property="og:image" content="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Fnvm.png">
-<meta property="og:image" content="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Fshell.png">
-<meta property="og:updated_time" content="2016-02-24T15:31:35.000Z">
+<meta property="og:description" content="图解原型之前针对原型和闭包写过一篇笔记，现在看来，那时候并没有真正理解原型，只是查阅整理了许多资料，有了一个似是而非的认识。
+这里通过一段代码和自己画的一个分析图作说明～">
+<meta property="og:image" content="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Fjs-prototype.png">
+<meta property="og:updated_time" content="2016-02-24T15:40:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac下Hexo博客搭建">
-<meta name="twitter:description" content="第一篇文章简单纪录一下第一次搭建blog的过程。
-经验告诉我文档大法好，可以少踩坑，避免很多不必要的操作。因此基本都是在官方文档指导下操作的，参考了部分文章。">
+<meta name="twitter:title" content="JavaScript学习－图解原型">
+<meta name="twitter:description" content="图解原型之前针对原型和闭包写过一篇笔记，现在看来，那时候并没有真正理解原型，只是查阅整理了许多资料，有了一个似是而非的认识。
+这里通过一段代码和自己画的一个分析图作说明～">
 
 
 
@@ -79,7 +78,7 @@
   };
 </script>
 
-  <title> mac下Hexo博客搭建 | Dawn's Mirror </title>
+  <title> JavaScript学习－图解原型 | Dawn's Mirror </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -219,7 +218,7 @@
             
             
               
-                mac下Hexo博客搭建
+                JavaScript学习－图解原型
               
             
           </h1>
@@ -228,8 +227,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-12T16:31:27+08:00" content="2016-01-12">
-              2016-01-12
+            <time itemprop="dateCreated" datetime="2016-02-24T19:36:00+08:00" content="2016-02-24">
+              2016-02-24
             </time>
           </span>
 
@@ -254,8 +253,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/12/mac下Hexo博客搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/12/mac下Hexo博客搭建/" itemprop="commentsCount"></span>
+                <a href="/2016/02/24/JavaScript学习－图解原型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/JavaScript学习－图解原型/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -274,45 +273,28 @@
       
 
       
-        <span itemprop="articleBody"><p>第一篇文章简单纪录一下第一次搭建blog的过程。</p>
-<p>经验告诉我<strong>文档大法好</strong>，可以少踩坑，避免很多不必要的操作。因此基本都是在<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">官方文档</a>指导下操作的，参考了部分文章。<br><a id="more"></a></p>
-<h2 id="Hexo_u5B89_u88C5"><a href="#Hexo_u5B89_u88C5" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external"><strong>Hexo</strong></a>是一个简洁高效的博客框架，使用 Markdown（或其他渲染引擎）解析文章，能够快速生成静态网页。</p>
-<h3 id="u5B89_u88C5git"><a href="#u5B89_u88C5git" class="headerlink" title="安装git"></a>安装git</h3><p>已经安装，故跳过；</p>
-<h3 id="u5B89_u88C5node-JS"><a href="#u5B89_u88C5node-JS" class="headerlink" title="安装node.JS"></a>安装<a href="https://nodejs.org/en/" target="_blank" rel="external">node.JS</a></h3><p>建议使用<a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a>(node version manager)进行安装，便于对多版本node进行管理</p>
+        <span itemprop="articleBody"><h2 id="u56FE_u89E3_u539F_u578B"><a href="#u56FE_u89E3_u539F_u578B" class="headerlink" title="图解原型"></a>图解原型</h2><p>之前针对原型和闭包写过一篇笔记，现在看来，那时候并没有真正理解原型，只是查阅整理了许多资料，有了一个似是而非的认识。</p>
+<p>这里通过一段代码和自己画的一个分析图作说明～<br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Fjs-prototype.png" alt=""><br><a id="more"></a></p>
 <blockquote>
-<p>安装nvm。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.<span class="number">30.1</span>/install.sh | bash</span><br></pre></td></tr></table></figure></p>
-<p><a href="/#question">我遇到的问题</a><br>安装Node.JS。4代表版本号。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
+<p>题目参考了<a name="xaber"></a><a href="http://xaber.co/2016/02/06/JavaScript%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%20%E2%80%94%E2%80%94%20%E5%8E%9F%E5%9E%8Bprototype/" target="_blank" rel="external">Xaber’s blog</a>。</p>
 </blockquote>
-<h3 id="u5B89_u88C5Hexo_u3002"><a href="#u5B89_u88C5Hexo_u3002" class="headerlink" title="安装Hexo。"></a>安装Hexo。</h3><p>装完前两个，终于可以装Hexo啦。这里npm是nodejs的包管理器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
-<h2 id="Hexo_u5EFA_u7AD9"><a href="#Hexo_u5EFA_u7AD9" class="headerlink" title="Hexo建站"></a>Hexo建站</h2><p>安装Hexo后，进入计划存放文件的目录。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init dawncc</span><br><span class="line"><span class="built_in">cd</span> dawncc</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></p>
-<p>在dawncc下会新建一系列文件，如<code>_config.yml,source,theme</code>等，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
-<p>或可简写为<code>hexo s</code>后，就可以通过<code>http://localhost:4000</code>在本地打开构建完成的网站了～</p>
-<h2 id="Hexo_u90E8_u7F72"><a href="#Hexo_u90E8_u7F72" class="headerlink" title="Hexo部署"></a>Hexo部署</h2><p>为了能正常访问网站，需要将网站部署(deploy)到服务器上，这里使用了github的<a href="https://pages.github.com" target="_blank" rel="external">github pages</a>服务。</p>
-<h3 id="u521B_u5EFArepository"><a href="#u521B_u5EFArepository" class="headerlink" title="创建repository"></a>创建repository</h3><p>创建一个与用户名同名的repo，例如<code>dawn-cc.github.io</code>这里不需要创建README，因为即使现在创建了，在之后deploy的时候也会被覆盖掉。</p>
-<h3 id="u4FEE_u6539_config-yml"><a href="#u4FEE_u6539_config-yml" class="headerlink" title="修改_config.yml"></a>修改_config.yml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://dawn-cc.github.com/xxx</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>可以添加type和repo来使用多个deployer。</p>
-<p><strong>进行所有修改后，在deploy前需要执行<code>hexo generate</code>or简写为<code>hexo g</code>来生成页面文件。</strong></p>
-<h3 id="u5B89_u88C5hexo-deployer-git"><a href="#u5B89_u88C5hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h3><p>我原先没有安装，执行<code>hexo deploy</code>的时候返回<code>ERROR</code>……所以应该先安装。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>成功后，就可以通过域名<a href="/dawn-cc.github.io">dawn-cc.github.io</a>来访问啦。</p>
-<h2 id="u9047_u5230_u7684_u95EE_u9898"><a href="#u9047_u5230_u7684_u95EE_u9898" class="headerlink" title="遇到的问题"></a><a name="question">遇到的问题</a></h2><h3 id="u5B89_u88C5nvm_u65F6"><a href="#u5B89_u88C5nvm_u65F6" class="headerlink" title="安装nvm时"></a>安装nvm时</h3><p><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Fnvm.png" alt=""></p>
-<p>提示需要手动将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"/User/dawn/.nvm"</span></span><br><span class="line">[ <span class="operator">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span></span><br></pre></td></tr></table></figure></p>
-<p>添加到~/.bash_profile, ~/.zshrc or ~/.profile中，要手动操作是因为我的路径下没有这些文件之一，所以重新创建就可以了。这里由于好奇和无知……才知道原来不止有bash……<br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Fshell.png" alt=""><br>装了<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh my zsh</a>，据说联想和补全功能比较强大。</p>
-<h3 id="deploy_u65F6"><a href="#deploy_u65F6" class="headerlink" title="deploy时"></a>deploy时</h3><p>_config.yml文件的格式要求严格，如<code>type: git</code>中的<code>:</code>之后必须要有空格。</p>
-<h3 id="u7F16_u8F91blog_u65F6"><a href="#u7F16_u8F91blog_u65F6" class="headerlink" title="编辑blog时"></a>编辑blog时</h3><p>在MacDown中编辑时预览的标题效果，本地<code>hexo s</code>查看发现<code>#</code>没有被解析，其实是因为标准写法<code>## 标题</code>中<code>#</code>后需要有空格，格式要规范啊。</p>
-<h3 id="u4E00_u4E9B_u7B80_u5199"><a href="#u4E00_u4E9B_u7B80_u5199" class="headerlink" title="一些简写"></a>一些简写</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo server == hexo s</span><br><span class="line">hexo generate == hexo g</span><br><span class="line">hexo deploy == hexo d</span><br><span class="line">hexo new == hexo n</span><br></pre></td></tr></table></figure>
-<h2 id="u4E3B_u9898_u8BBE_u7F6E"><a href="#u4E3B_u9898_u8BBE_u7F6E" class="headerlink" title="主题设置"></a>主题设置</h2><p>找到心仪的<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>，进入Github，git clone到dawncc/themes。比如很火的<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">next</a>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next.git next</span><br></pre></td></tr></table></figure>
-<p>然后修改_config.yml中<code>theme: next</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug <span class="comment">#本地浏览效果，没问题就deploy上去～</span></span><br></pre></td></tr></table></figure></p>
-<p>其他自定义设置，比如RSS，评论等都可以参考next的<a href="http://theme-next.iissnan.com" target="_blank" rel="external">文档</a>。</p>
-<h2 id="u53D1_u8868_u6587_u7AE0"><a href="#u53D1_u8868_u6587_u7AE0" class="headerlink" title="发表文章"></a>发表文章</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new mac下Hexo博客搭建</span><br></pre></td></tr></table></figure>
-<p>这样<code>source/_post</code>目录下就会生成<code>mac下Hexo博客搭建.md</code>文件，根据需要修改title部分,在<code>---</code>分隔线后，使用markdown编辑文章即可。不熟练的话可以用一些编辑器，比如MacDown，subline的markdown插件等。</p>
-<p>编辑完之后，<code>hexo s</code>就能本地看到新编辑的文章了，没问题就<code>hexo g</code>,<code>hexo d</code>吧。</p>
-<h2 id="u5176_u4ED6_u53C2_u8003_u8D44_u6599"><a href="#u5176_u4ED6_u53C2_u8003_u8D44_u6599" class="headerlink" title="其他参考资料"></a>其他参考资料</h2><ul>
-<li><a href="http://www.isetsuna.com/hexo/writing-image/" target="_blank" rel="external">Hexo博客系列（四）：写作和图床 | Setsuna’s Blog</a></li>
-<li><a href="http://www.cnblogs.com/canglangwenyue/p/3693110.html" target="_blank" rel="external">Mac OS 下搭建hexo个人博客 - canglangwenyue - 博客园</a></li>
-<li><a href="http://segmentfault.com/q/1010000002561642" target="_blank" rel="external">category - hexo分类与tags配置 - SegmentFault</a></li>
-<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">hexo你的博客 | 不如</a></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> A = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;<span class="comment">//TIME1</span></span><br><span class="line">A.prototype = &#123;</span><br><span class="line">    num: <span class="number">1</span>,</span><br><span class="line">    text: <span class="string">'aaa'</span></span><br><span class="line">&#125;;<span class="comment">//TIME2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(x.num);<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(x.text);<span class="comment">//'aaa'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> y = <span class="keyword">new</span> A();</span><br><span class="line">A.prototype = &#123;</span><br><span class="line">    num: <span class="number">2</span></span><br><span class="line">&#125;;<span class="comment">//TIME3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(y.num);<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(y.text);<span class="comment">//'aaa'</span></span><br><span class="line"></span><br><span class="line">y.num = <span class="number">3</span>;<span class="comment">//此时x.num = 1</span></span><br><span class="line"><span class="keyword">var</span> z = <span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(z.num);<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(z.text);<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，给<code>A.prototype</code>赋值一个以字面量形式创建的新对象是时，相当于重写了原型对象，会切断现有原型与任何之前已经存在的对象实例(<code>x, y</code>)之间的联系，它们引用的仍然是最初的原型。</p>
+<p>此时，测试instanceof 可以得到</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x <span class="keyword">instanceof</span> A;<span class="comment">//false</span></span><br><span class="line">y <span class="keyword">instanceof</span> A;<span class="comment">//false</span></span><br><span class="line">z <span class="keyword">instanceof</span> A;<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="u4E00_u4E9B_u5E9F_u8BDD"><a href="#u4E00_u4E9B_u5E9F_u8BDD" class="headerlink" title="一些废话"></a>一些废话</h2><p>17号参加了离职以来的第一次面试，也是第一次面对前端的面试。</p>
+<p>第一次打怪就被KO了，感人的是回城的路上get了一本攻略，面试官大大<a href="/#xaber">👆</a>给我发了一篇邮件，列出了一些前端学习上的建议和书单，其中有一句话是这样说的</p>
+<blockquote>
+<p>不要急着学react这些，如果一开始没有学好基础，学了那些东西，只会用，其实也没有什么适用性。</p>
+</blockquote>
+<p><del>之前的学习一直针对ife的任务来进行，看了许多线上的资料和博客，从完成页面和交互小任务的过程中，最大的收获可能是不知道哪儿来的成就感和自信……</del></p>
+<p>对前端有了一定的认识之后，<strong>是时候系统的看一些书了</strong>。这6天断断续续看了两本书，跳过了个别部分。</p>
+<ul>
+<li>《JavaScript DOM编程艺术 第2版》</li>
+<li>《JavaScript高级程序设计（第3版）》</li>
 </ul>
+<p>前者比较浅显，帮助梳理了掌握的一些方法；后者则收获很大，帮助理解了许多基础知识及拓展了知识点。有些地方虽说理解了，记住却需要反复看，这一轮书单清空之后可以<mark>再看一遍</mark>～</p>
+<p>不多说，k下一本书去了。ಥ_ಥ</p>
 </span>
       
     </div>
@@ -321,9 +303,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
-          
-            <a href="/tags/hexo/" rel="tag">#hexo</a>
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
         </div>
       
@@ -332,13 +312,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/02/15/git-使用/" rel="next" title="git 使用">
+                <i class="fa fa-chevron-left"></i> git 使用
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/14/ife-task0001总结/" rel="prev" title="ife_task0001总结">
-                ife_task0001总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -365,8 +345,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/12/mac下Hexo博客搭建/"
-           data-title="mac下Hexo博客搭建" data-url="http://yoursite.com/2016/01/12/mac下Hexo博客搭建/">
+      <div class="ds-thread" data-thread-key="2016/02/24/JavaScript学习－图解原型/"
+           data-title="JavaScript学习－图解原型" data-url="http://yoursite.com/2016/02/24/JavaScript学习－图解原型/">
       </div>
     
   </div>
@@ -473,7 +453,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo_u5B89_u88C5"><span class="nav-number">1.</span> <span class="nav-text">Hexo安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B89_u88C5git"><span class="nav-number">1.1.</span> <span class="nav-text">安装git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B89_u88C5node-JS"><span class="nav-number">1.2.</span> <span class="nav-text">安装node.JS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B89_u88C5Hexo_u3002"><span class="nav-number">1.3.</span> <span class="nav-text">安装Hexo。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo_u5EFA_u7AD9"><span class="nav-number">2.</span> <span class="nav-text">Hexo建站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo_u90E8_u7F72"><span class="nav-number">3.</span> <span class="nav-text">Hexo部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u521B_u5EFArepository"><span class="nav-number">3.1.</span> <span class="nav-text">创建repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4FEE_u6539_config-yml"><span class="nav-number">3.2.</span> <span class="nav-text">修改_config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B89_u88C5hexo-deployer-git"><span class="nav-number">3.3.</span> <span class="nav-text">安装hexo-deployer-git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u9047_u5230_u7684_u95EE_u9898"><span class="nav-number">4.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B89_u88C5nvm_u65F6"><span class="nav-number">4.1.</span> <span class="nav-text">安装nvm时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deploy_u65F6"><span class="nav-number">4.2.</span> <span class="nav-text">deploy时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7F16_u8F91blog_u65F6"><span class="nav-number">4.3.</span> <span class="nav-text">编辑blog时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00_u4E9B_u7B80_u5199"><span class="nav-number">4.4.</span> <span class="nav-text">一些简写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E3B_u9898_u8BBE_u7F6E"><span class="nav-number">5.</span> <span class="nav-text">主题设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53D1_u8868_u6587_u7AE0"><span class="nav-number">6.</span> <span class="nav-text">发表文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5176_u4ED6_u53C2_u8003_u8D44_u6599"><span class="nav-number">7.</span> <span class="nav-text">其他参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u56FE_u89E3_u539F_u578B"><span class="nav-number">1.</span> <span class="nav-text">图解原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E00_u4E9B_u5E9F_u8BDD"><span class="nav-number">2.</span> <span class="nav-text">一些废话</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

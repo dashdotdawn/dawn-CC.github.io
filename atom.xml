@@ -4,7 +4,7 @@
   <subtitle><![CDATA[code the world]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-15T15:34:56.000Z</updated>
+  <updated>2016-02-24T15:40:37.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[JavaScript学习－图解原型]]></title>
+    <link href="http://yoursite.com/2016/02/24/JavaScript%E5%AD%A6%E4%B9%A0%EF%BC%8D%E5%9B%BE%E8%A7%A3%E5%8E%9F%E5%9E%8B/"/>
+    <id>http://yoursite.com/2016/02/24/JavaScript学习－图解原型/</id>
+    <published>2016-02-24T11:36:00.000Z</published>
+    <updated>2016-02-24T15:40:37.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="u56FE_u89E3_u539F_u578B"><a href="#u56FE_u89E3_u539F_u578B" class="headerlink" title="图解原型"></a>图解原型</h2><p>之前针对原型和闭包写过一篇笔记，现在看来，那时候并没有真正理解原型，只是查阅整理了许多资料，有了一个似是而非的认识。</p>
+<p>这里通过一段代码和自己画的一个分析图作说明～<br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Fjs-prototype.png" alt=""><br><a id="more"></a></p>
+<blockquote>
+<p>题目参考了<a name="xaber"></a><a href="http://xaber.co/2016/02/06/JavaScript%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97%20%E2%80%94%E2%80%94%20%E5%8E%9F%E5%9E%8Bprototype/" target="_blank" rel="external">Xaber’s blog</a>。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> A = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;<span class="comment">//TIME1</span></span><br><span class="line">A.prototype = &#123;</span><br><span class="line">    num: <span class="number">1</span>,</span><br><span class="line">    text: <span class="string">'aaa'</span></span><br><span class="line">&#125;;<span class="comment">//TIME2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(x.num);<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(x.text);<span class="comment">//'aaa'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> y = <span class="keyword">new</span> A();</span><br><span class="line">A.prototype = &#123;</span><br><span class="line">    num: <span class="number">2</span></span><br><span class="line">&#125;;<span class="comment">//TIME3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(y.num);<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(y.text);<span class="comment">//'aaa'</span></span><br><span class="line"></span><br><span class="line">y.num = <span class="number">3</span>;<span class="comment">//此时x.num = 1</span></span><br><span class="line"><span class="keyword">var</span> z = <span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(z.num);<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(z.text);<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，给<code>A.prototype</code>赋值一个以字面量形式创建的新对象是时，相当于重写了原型对象，会切断现有原型与任何之前已经存在的对象实例(<code>x, y</code>)之间的联系，它们引用的仍然是最初的原型。</p>
+<p>此时，测试instanceof 可以得到</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x <span class="keyword">instanceof</span> A;<span class="comment">//false</span></span><br><span class="line">y <span class="keyword">instanceof</span> A;<span class="comment">//false</span></span><br><span class="line">z <span class="keyword">instanceof</span> A;<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="u4E00_u4E9B_u5E9F_u8BDD"><a href="#u4E00_u4E9B_u5E9F_u8BDD" class="headerlink" title="一些废话"></a>一些废话</h2><p>17号参加了离职以来的第一次面试，也是第一次面对前端的面试。</p>
+<p>第一次打怪就被KO了，感人的是回城的路上get了一本攻略，面试官大大<a href="/#xaber">👆</a>给我发了一篇邮件，列出了一些前端学习上的建议和书单，其中有一句话是这样说的</p>
+<blockquote>
+<p>不要急着学react这些，如果一开始没有学好基础，学了那些东西，只会用，其实也没有什么适用性。</p>
+</blockquote>
+<p><del>之前的学习一直针对ife的任务来进行，看了许多线上的资料和博客，从完成页面和交互小任务的过程中，最大的收获可能是不知道哪儿来的成就感和自信……</del></p>
+<p>对前端有了一定的认识之后，<strong>是时候系统的看一些书了</strong>。这6天断断续续看了两本书，跳过了个别部分。</p>
+<ul>
+<li>《JavaScript DOM编程艺术 第2版》</li>
+<li>《JavaScript高级程序设计（第3版）》</li>
+</ul>
+<p>前者比较浅显，帮助梳理了掌握的一些方法；后者则收获很大，帮助理解了许多基础知识及拓展了知识点。有些地方虽说理解了，记住却需要反复看，这一轮书单清空之后可以<mark>再看一遍</mark>～</p>
+<p>不多说，k下一本书去了。ಥ_ಥ</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="u56FE_u89E3_u539F_u578B"><a href="#u56FE_u89E3_u539F_u578B" class="headerlink" title="图解原型"></a>图解原型</h2><p>之前针对原型和闭包写过一篇笔记，现在看来，那时候并没有真正理解原型，只是查阅整理了许多资料，有了一个似是而非的认识。</p>
+<p>这里通过一段代码和自己画的一个分析图作说明～<br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/hexo%2Fjs-prototype.png" alt=""><br>]]>
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+      <category term="code" scheme="http://yoursite.com/categories/code/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[git 使用]]></title>
     <link href="http://yoursite.com/2016/02/15/git-%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2016/02/15/git-使用/</id>
     <published>2016-02-15T10:23:59.000Z</published>
-    <updated>2016-02-15T15:34:56.000Z</updated>
+    <updated>2016-02-24T15:34:02.000Z</updated>
     <content type="html"><![CDATA[<p>记录一下平时使用github的方式，和一些常用命令。</p>
 <h2 id="u914D_u5408github_u4F7F_u7528"><a href="#u914D_u5408github_u4F7F_u7528" class="headerlink" title="配合github使用"></a>配合github使用</h2><ul>
 <li>在github上新建repository</li>
@@ -75,7 +116,7 @@
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
-      <category term="随手记" scheme="http://yoursite.com/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
+      <category term="code" scheme="http://yoursite.com/categories/code/"/>
     
   </entry>
   
@@ -84,7 +125,7 @@
     <link href="http://yoursite.com/2016/02/13/JavaScript%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E9%97%AD%E5%8C%85/"/>
     <id>http://yoursite.com/2016/02/13/JavaScript深度学习-原型与闭包/</id>
     <published>2016-02-13T07:41:50.000Z</published>
-    <updated>2016-02-14T18:00:16.000Z</updated>
+    <updated>2016-02-24T15:36:43.000Z</updated>
     <content type="html"><![CDATA[<p>学习JavaScript闭包、设计模式等内容过程中，简单做一些笔记整理，便于自己的理解。</p>
 <h2 id="u4F5C_u7528_u57DF"><a href="#u4F5C_u7528_u57DF" class="headerlink" title="作用域"></a>作用域</h2><h3 id="u5168_u5C40_u4F5C_u7528_u57DF_28Global_Scope_29"><a href="#u5168_u5C40_u4F5C_u7528_u57DF_28Global_Scope_29" class="headerlink" title="全局作用域(Global Scope)"></a>全局作用域(Global Scope)</h3><ul>
 <li>最外层函数</li>
@@ -210,9 +251,7 @@
     
       <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
-    
-      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="code" scheme="http://yoursite.com/categories/code/"/>
     
   </entry>
   
@@ -221,7 +260,7 @@
     <link href="http://yoursite.com/2016/01/19/ife-task0002%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2016/01/19/ife-task0002总结/</id>
     <published>2016-01-18T16:47:17.000Z</published>
-    <updated>2016-02-14T18:02:11.000Z</updated>
+    <updated>2016-02-24T15:36:33.000Z</updated>
     <content type="html"><![CDATA[<p>task0002的内容是Javascript的学习。</p>
 <p><a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0002#任务描述" target="_blank" rel="external"><strong>任务要求</strong></a></p>
 <p><a href="https://github.com/dawn-CC/ife-task/tree/master/task0002" target="_blank" rel="external"><strong>code</strong></a></p>
@@ -587,9 +626,11 @@
     
     </summary>
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
     
-      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="ife" scheme="http://yoursite.com/tags/ife/"/>
+    
+      <category term="code" scheme="http://yoursite.com/categories/code/"/>
     
   </entry>
   
@@ -598,7 +639,7 @@
     <link href="http://yoursite.com/2016/01/14/ife-task0001%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2016/01/14/ife-task0001总结/</id>
     <published>2016-01-13T17:12:07.000Z</published>
-    <updated>2016-02-14T12:29:34.000Z</updated>
+    <updated>2016-02-24T15:36:17.000Z</updated>
     <content type="html"><![CDATA[<p><a href="https://github.com/baidu-ife/ife" target="_blank" rel="external">百度Web前端技术学院</a>（Baidu Institute of Front-End Technology简称IFE）在2015年开办过两次前端课程，课程及内容开放在Github上，是前端入门学习不错的资料。</p>
 <p>共有四个任务，task0001的综合练习完成在这里😱</p>
 <blockquote>
@@ -774,9 +815,11 @@
     
     </summary>
     
-      <category term="frontend" scheme="http://yoursite.com/tags/frontend/"/>
+      <category term="html&amp;css" scheme="http://yoursite.com/tags/html-css/"/>
     
-      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="ife" scheme="http://yoursite.com/tags/ife/"/>
+    
+      <category term="code" scheme="http://yoursite.com/categories/code/"/>
     
   </entry>
   
@@ -785,7 +828,7 @@
     <link href="http://yoursite.com/2016/01/12/mac%E4%B8%8BHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2016/01/12/mac下Hexo博客搭建/</id>
     <published>2016-01-12T08:31:27.000Z</published>
-    <updated>2016-01-12T11:49:48.000Z</updated>
+    <updated>2016-02-24T15:31:35.000Z</updated>
     <content type="html"><![CDATA[<p>第一篇文章简单纪录一下第一次搭建blog的过程。</p>
 <p>经验告诉我<strong>文档大法好</strong>，可以少踩坑，避免很多不必要的操作。因此基本都是在<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">官方文档</a>指导下操作的，参考了部分文章。<br><a id="more"></a></p>
 <h2 id="Hexo_u5B89_u88C5"><a href="#Hexo_u5B89_u88C5" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external"><strong>Hexo</strong></a>是一个简洁高效的博客框架，使用 Markdown（或其他渲染引擎）解析文章，能够快速生成静态网页。</p>
@@ -836,7 +879,7 @@
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
-      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="code" scheme="http://yoursite.com/categories/code/"/>
     
   </entry>
   
