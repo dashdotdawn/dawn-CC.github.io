@@ -4,7 +4,7 @@
   <subtitle><![CDATA[code the world]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-24T15:40:37.000Z</updated>
+  <updated>2016-02-28T04:21:12.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[反思与打算_(´･_･`)]]></title>
+    <link href="http://yoursite.com/2016/02/28/%E5%8F%8D%E6%80%9D%E4%B8%8E%E6%89%93%E7%AE%97-%C2%B4%EF%BD%A5-%EF%BD%A5/"/>
+    <id>http://yoursite.com/2016/02/28/反思与打算-´･-･/</id>
+    <published>2016-02-27T17:57:55.000Z</published>
+    <updated>2016-02-28T04:21:12.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="u6700_u8FD1"><a href="#u6700_u8FD1" class="headerlink" title="最近"></a>最近</h2><p>这四天七七八八看了三本书</p>
+<ul>
+<li>《JavaScript语言精粹（修订版）》——80%</li>
+<li>《精通CSS：高级Web标准解决方案(第2版)》——65%</li>
+<li>《锋利的jQuery 第2版》——60%</li>
+</ul>
+<a id="more"></a>
+<p>跳过了许多内容，有些是由于时间紧张、没有详细分析案例；有些是由于一下子实在看得太多，接受能力有限，所以大概有一些印象，用到的时候再行仔细翻阅。</p>
+<p>至于看到最后一本的时候，在最近的焦虑状态下，加上pdf带来的不适，耐心终于被耗的差不多了，几乎是在慕课网的jQuery教程和pdf之间不停的来回切，才终于干掉。看红皮书的时候就愉快多了，<strong>论买实体书的必要性</strong>。</p>
+<p>so, 实践的时候到了。</p>
+<h2 id="u6253_u7B97"><a href="#u6253_u7B97" class="headerlink" title="打算"></a>打算</h2><p>找工作这种事，也不是我说要什么时候找到，就能什么时候找到的。</p>
+<p><strong>明天醒来再做一个小demo，填充一下我可怜巴巴的简历。就要等投递和面试结果了。希望速战速决。</strong></p>
+<p>我有很多愿望想要去达成。</p>
+<p>工作上的不多～</p>
+<ul>
+<li>技术提高工资变多就好了……</li>
+<li>哦对了，我想当个又能设计还会后端的全栈哈哈哈</li>
+</ul>
+<p>生活上一大堆＝＝</p>
+<ul>
+<li>捡回来忘的差不多的大三学了一年的日语；</li>
+<li>曾经辛辛苦苦做家教赚钱买的板子一直在冷宫缦立远视，而望幸焉，不能对美人无情；</li>
+<li>吃好吃的，做好吃的；</li>
+<li>攒了钱再考虑吧，澎湃的数码欲呵&gt;.&lt;</li>
+</ul>
+<h2 id="u6709_u4E9B_u5E9F_u8BDD"><a href="#u6709_u4E9B_u5E9F_u8BDD" class="headerlink" title="有些废话"></a>有些废话</h2><p>母上曾经找神棍给我算命的时候算出来说，我的心太静了，比最纯净的水更静（如此玛丽苏的说法）。很少有人见到我上火的样子。其实，水的比喻算是恰当，谁知道水面之下是什么景象呢？</p>
+<p>作为一个二十四小时每个时刻都能睡着、且睡的无知无觉的人，原本一年失眠不了两次的我，这两天每天都要辗转2个小时才能睡着。我是焦虑的。我也急于想摆脱这种焦虑。</p>
+<h3 id="u53CD_u601D"><a href="#u53CD_u601D" class="headerlink" title="反思"></a>反思</h3><p>我想起提出辞职的那天，是我生日的前一天，我想要为自己做个决定，而后果当然自己来承担。</p>
+<p>辞职的原因有很多，家庭的、个人的、公司的。妈妈虽想让我回到浙沪附近，但她不愿意我放弃一份能让我过得不错的工作，所以她是坚决反对的。而我总有着那么些，洒脱狂妄。人活一世，一些事比另一些事重要，比如亲人比他人的看法重要、梦想比奢靡重要。</p>
+<p>当然，俗人如我，洒脱是不够的。2个月没有收入、过年还发出去几千块红包、现在借住在杭州的同学家的我……要赚钱啊！◡ ヽ(`Д´)ﾉ ┻━┻ 从后端码农转到前端小白，知道积累和踏实的重要性，我也只能在有限的时间内尽可能提高自己，尽快解决入不敷出的窘境sad。</p>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><p>本命年，虚岁13，不小了，又一次重新出发。前进吧。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="u6700_u8FD1"><a href="#u6700_u8FD1" class="headerlink" title="最近"></a>最近</h2><p>这四天七七八八看了三本书</p>
+<ul>
+<li>《JavaScript语言精粹（修订版）》——80%</li>
+<li>《精通CSS：高级Web标准解决方案(第2版)》——65%</li>
+<li>《锋利的jQuery 第2版》——60%</li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="bullshit" scheme="http://yoursite.com/tags/bullshit/"/>
+    
+      <category term="life" scheme="http://yoursite.com/categories/life/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[JavaScript学习－图解原型]]></title>
@@ -60,7 +114,7 @@
     <link href="http://yoursite.com/2016/02/15/git-%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2016/02/15/git-使用/</id>
     <published>2016-02-15T10:23:59.000Z</published>
-    <updated>2016-02-24T15:34:02.000Z</updated>
+    <updated>2016-02-28T04:23:41.000Z</updated>
     <content type="html"><![CDATA[<p>记录一下平时使用github的方式，和一些常用命令。</p>
 <h2 id="u914D_u5408github_u4F7F_u7528"><a href="#u914D_u5408github_u4F7F_u7528" class="headerlink" title="配合github使用"></a>配合github使用</h2><ul>
 <li>在github上新建repository</li>
