@@ -4,7 +4,7 @@
   <subtitle><![CDATA[code the world]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-28T04:21:12.000Z</updated>
+  <updated>2016-02-29T11:01:13.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[初次尝试——filterOL]]></title>
+    <link href="http://yoursite.com/2016/02/29/%E5%88%9D%E6%AC%A1%E5%B0%9D%E8%AF%95%E2%80%94%E2%80%94filterOL/"/>
+    <id>http://yoursite.com/2016/02/29/初次尝试——filterOL/</id>
+    <published>2016-02-29T09:57:16.000Z</published>
+    <updated>2016-02-29T11:01:13.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="filterOL_u662F_u4EC0_u4E48"><a href="#filterOL_u662F_u4EC0_u4E48" class="headerlink" title="filterOL是什么"></a>filterOL是什么</h2><blockquote>
+<p><a href="https://github.com/dawn-CC/filterOL" target="_blank" rel="external">code</a></p>
+<p><a href="http://dawn-cc.github.io/filterOL/" target="_blank" rel="external">demo</a></p>
+</blockquote>
+<p>大概长这样<br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/filterOL%2FfOL-mb.jpg"><br><a id="more"></a><br>filterOL是一个在线版的图片滤镜效果调节页面，技术上来说就是把css3中的filter功能做成可视化功能，额，比较的简陋。</p>
+<p><strong>不过是一次很好的练习！</strong>起初是看到canvas内容的时候想做的，实现的时候觉得filter更简单，就用了canvas。</p>
+<h2 id="u6536_u83B7"><a href="#u6536_u83B7" class="headerlink" title="收获"></a>收获</h2><ul>
+<li>先写了js部分，在打算写页面的时候，看到了UI框架这种东西，之前未曾接触过，这里作了一次尝试，引入了<code>pure.css</code>中的side-bar；</li>
+<li>在看<code>pure.css</code>文档的时候，发现每个功能的使用方法理解起来很简单，但是如果是对页面布局有自己的要求，而需要灵活利用框架中的一部分的时候，问题就会比较多。甚至觉得不如完全自己写来的方便；</li>
+<li>我认为框架的好处有两点<ul>
+<li>在没有设计的情况下不至于让页面太丑陋</li>
+<li>框架和模版的代码，内容简练，注释清晰，格式规范，适合初学者好好学习</li>
+</ul>
+</li>
+<li>起初push之后发现demo打开缓慢，所以，web上压缩图片是必须的，在线的<a href="https://tinypng.com/" target="_blank" rel="external">https://tinypng.com/</a>用来压图非常nice，压图并不改变图片px值；</li>
+<li>在考虑移动端布局的时候，图片和滑条的位置关系，想让滑条呈现一列功能栏，单击隐藏或打开。这里框架中的side-bar很符合，于是就引入了。原先让我自己来写的话，打算的是单击按钮，可以toggle使ul元素show或者hide。</li>
+<li><strong>移动端的适配</strong>用了非常粗暴的方法，对图片针对父容器采用绝对定位。通过定位，如果图片比窗口大，则会充满视口。用手机测试了一下，显示效果还可以。这里又学会了可以用chrome的手机图标小按钮来调适。</li>
+<li>其实写代码的过程中也遇到了一些问题，解决之后实在涨经验啊，暂且不表。有时间的话可以更新一下。我又要投简历去了……ಥ_ಥ ಥ_ಥ ಥ_ಥ</li>
+</ul>
+<h2 id="u95EE_u9898"><a href="#u95EE_u9898" class="headerlink" title="问题"></a>问题</h2><ul>
+<li>有时候刷新，图片的位置间歇性的会变化，应该是由于使用ready函数的时候图片还未加载完，已修改；</li>
+<li>还是刷新问题，body使用了一个渐变的黑色背景，有时候背景不能正常显示，是因为css没有加载完？研究中……</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="filterOL_u662F_u4EC0_u4E48"><a href="#filterOL_u662F_u4EC0_u4E48" class="headerlink" title="filterOL是什么"></a>filterOL是什么</h2><blockquote>
+<p><a href="https://github.com/dawn-CC/filterOL">code</a></p>
+<p><a href="http://dawn-cc.github.io/filterOL/">demo</a></p>
+</blockquote>
+<p>大概长这样<br><img src="http://7xpyd5.com1.z0.glb.clouddn.com/filterOL%2FfOL-mb.jpg"><br>]]>
+    
+    </summary>
+    
+      <category term="demo" scheme="http://yoursite.com/tags/demo/"/>
+    
+      <category term="pure.css" scheme="http://yoursite.com/tags/pure-css/"/>
+    
+      <category term="code" scheme="http://yoursite.com/categories/code/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[反思与打算_(´･_･`)]]></title>
